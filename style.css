@@ -1,0 +1,38 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.calculadora {
+    height: 45rem;
+    width: 35rem;
+    background-color: yellow;
+    margin-top: 5rem;
+    border-radius: 25px;
+
+}
+
+h1 {
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 3rem;
+}
+
+hr {
+    border: 0;
+    border-top: 4px solid #000
+}
+
+.campo {
+    display: block;
+}
