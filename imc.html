@@ -11,24 +11,30 @@
 
 <body>
     <div class="container">
-        <div class="calculadora">
-            <h1>Calculadora - IMC</h1>
-            <hr>
-            <form>
-                <div class="campo">
-                    <label for="nome">Nome: </label>
-                    <input type="text" name="nome" id="nome">
+        <div class="calculadora-wrapper">
+            <div class="calculadora">
+                <h1>Calculadora - IMC</h1>
+                <hr>
+                <form>
+                    <div class="campo">
+                        <label for="nome" class="campo-label">Nome: </label>
+                        <input type="text" class="campo-input" name="nome" id="nome">
+                    </div>
+                    <div class="campo">
+                        <label for="altura" class="campo-label">Altura: </label>
+                        <input type="number" class="campo-input" name="altura" id="altura">
+                    </div>
+                    <div class="campo">
+                        <label for="peso" class="campo-label">Peso: </label>
+                        <input type="number" class="campo-input" name="peso" id="peso">
+                    </div>
+                    <button id="calcular">Calcular</button>
+                </form>
+                <div class="resultado">
+
                 </div>
-                <div class="campo">
-                    <label for="altura">Altura: </label>
-                    <input type="number" name="altura" id="altura">
-                </div>
-                <div class="campo">
-                    <label for="peso">Peso: </label>
-                    <input type="number" name="peso" id="peso">
-                </div>
-                <button id="calcular">Calcular</button>
-            </form>
+            </div>
+
         </div>
     </div>
 </body>
