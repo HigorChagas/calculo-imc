@@ -18,25 +18,27 @@
                 <form>
                     <div class="campo">
                         <label for="nome" class="campo-label">Nome: </label>
-                        <input type="text" class="campo-input" name="nome" id="nome">
+                        <input type="text" class="campo-input" name="nome" id="nome" required>
                     </div>
                     <div class="campo">
                         <label for="altura" class="campo-label">Altura: </label>
-                        <input type="number" class="campo-input" name="altura" id="altura">
+                        <input type="number" class="campo-input" name="altura" id="altura" required>
                     </div>
                     <div class="campo">
                         <label for="peso" class="campo-label">Peso: </label>
-                        <input type="number" class="campo-input" name="peso" id="peso">
+                        <input type="number" class="campo-input" name="peso" id="peso" required>
                     </div>
-                    <button id="calcular">Calcular</button>
+                    <input class="btn" type="button" value="Calcular" onclick="calcular()">
                 </form>
-                <div class="resultado">
-
+                <div id="resultado">
+                    Teste
                 </div>
             </div>
 
         </div>
     </div>
+
+    <script src="/script.js"></script>
 </body>
 
 </html>
