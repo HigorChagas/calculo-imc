@@ -6,7 +6,7 @@ function calcular() {
     var resultado = window.document.getElementById('resultado')
 
     var nome = String(nome.value)
-    var numeroAltura = Number(altura.value)
+    var numeroAltura = parseFloat(altura.value)
     var numeroPeso = Number(peso.value)
 
     var calculoImc = numeroPeso / (numeroAltura * numeroAltura)

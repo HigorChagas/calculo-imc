@@ -9,8 +9,52 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #3d405b;
+    background-color: #fff;
 
+}
+
+.classificacao {
+    width: 35%;
+    height: 35%;
+    background-color: black;
+}
+
+.tabela-classificacao {
+    width: 100%;
+}
+
+.tabela-classificacao tr th:nth-child(1){
+    color: white;
+    float: left;
+    padding: 0 25px;
+}
+
+.tabela-classificacao tr th:nth-child(2) {
+    color: white;
+    float: right;
+    padding: 0 6rem;
+}
+
+.tabela-classificacao th {
+    font-size: 1.5rem;
+}
+
+.tabela-classificacao tr {
+    padding: 50px;
+}
+
+.tabela-classificacao td:nth-child(1) {
+    color: white;
+    float: left;
+    padding: 0 15px;
+    font-size: 2rem;
+}
+
+.tabela-classificacao td:nth-child(2) {
+    color: white;
+    float: right;
+    padding: 0 3rem;
+    font-size: 2rem;
 }
 
 .calculadora-wrapper {
@@ -21,7 +65,7 @@
 }
 
 .calculadora {
-    background-color: #f48c06;
+    background-color: #dee2ff;
     height: 75%;
     width: 40rem;
     border-radius: 25px;
@@ -81,7 +125,7 @@ hr {
     font-size: 1.5rem;
     letter-spacing: .1rem;
     transition: 0.5s;
-    background-color: #ffba08;
+    background-color: #feeafa;
     box-shadow: 0 0 .4em #000;
 }
 
@@ -91,15 +135,16 @@ hr {
 
 #resultado {
     margin-top: 2rem;
-    background-color: black;
+    background-color: #4a4e69;
     height: 5rem;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    opacity: 0.9; 
     z-index: 999;
     color: white;
     font-size: 1.5rem;
+    border-radius: 25px;
 
 }
+
