@@ -26,6 +26,7 @@ function calcular() {
         resultadoObesidadeUm.classList.remove('orange')
         resultadoObesidadeDois.classList.remove('orange')
         resultadoObesidadeTres.classList.remove('red')
+        limparCampo()
     } else if (calculoImc >= 18.50 && calculoImc <= 24.9) {
         resultadoPeso.classList.add('blue')
         resultadoAbaixoPeso.classList.remove('blue')
@@ -33,6 +34,7 @@ function calcular() {
         resultadoObesidadeUm.classList.remove('orange')
         resultadoObesidadeDois.classList.remove('orange')
         resultadoObesidadeTres.classList.remove('red')
+        limparCampo()
     } else if (calculoImc >= 25 && calculoImc <= 29.9) {
         resultadoSobrePeso.classList.add('blue')
         resultadoAbaixoPeso.classList.remove('blue')
@@ -40,6 +42,7 @@ function calcular() {
         resultadoObesidadeUm.classList.remove('orange')
         resultadoObesidadeDois.classList.remove('orange')
         resultadoObesidadeTres.classList.remove('red')
+        limparCampo()
     } else if (calculoImc >= 30 && calculoImc <= 34.9) {
         resultadoObesidadeUm.classList.add('orange')
         resultadoAbaixoPeso.classList.remove('blue')
@@ -47,6 +50,7 @@ function calcular() {
         resultadoSobrePeso.classList.remove('blue')
         resultadoObesidadeDois.classList.remove('orange')
         resultadoObesidadeTres.classList.remove('red')
+        limparCampo()
     } else if (calculoImc >= 35 && calculoImc <= 39.9) {
         resultadoObesidadeDois.classList.add('orange')
         resultadoAbaixoPeso.classList.remove('blue')
@@ -54,6 +58,7 @@ function calcular() {
         resultadoSobrePeso.classList.remove('blue')
         resultadoObesidadeUm.classList.remove('orange')
         resultadoObesidadeTres.classList.remove('red')
+        limparCampo()
     } else if (calculoImc >= 40) {
         resultadoObesidadeTres.classList.add('red')
         resultadoAbaixoPeso.classList.remove('blue')
@@ -61,7 +66,12 @@ function calcular() {
         resultadoSobrePeso.classList.remove('blue')
         resultadoObesidadeUm.classList.remove('orange')
         resultadoObesidadeDois.classList.remove('orange')
+        limparCampo()
     }
+}
 
-
+function limparCampo() {
+    nome.value = ''
+    altura.value = ''
+    peso.value = ''
 }
