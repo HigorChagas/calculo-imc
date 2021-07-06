@@ -1,72 +1,28 @@
 function calcular() {
-    var nome = window.document.getElementById('nome')
-    var altura = window.document.getElementById('altura')
-    var peso = window.document.getElementById('peso')
+    removeHighlight()
+    
+    var nome = window.document.getElementById('nome').value
+    var altura = window.document.getElementById('altura').value
+    var peso = window.document.getElementById('peso').value
 
-    var resultadoPeso = window.document.getElementById('resultado-peso')
-    var resultadoAbaixoPeso = window.document.getElementById('resultado-abaixo-peso')
-    var resultadoSobrePeso = window.document.getElementById('resultado-sobrepeso')
-    var resultadoObesidadeUm = window.document.getElementById('resultado-obesidade-um')
-    var resultadoObesidadeDois = window.document.getElementById('resultado-obesidade-dois')
-    var resultadoObesidadeTres = window.document.getElementById('resultado-obesidade-tres')
+    //altura.replace(',', '.')
 
     var resultado = window.document.getElementById('resultado')
+    var resultadoCalculo = calculoImc(peso, altura)
 
-    var nome = String(nome.value)
-    var numeroAltura = Number(altura.value)
-    var numeroPeso = Number(peso.value)
+    resultado.innerHTML = `Olá ${nome}, o seu IMC é: ${resultadoCalculo.calculo}<br />`
 
-    var calculoImc = numeroPeso / (numeroAltura * numeroAltura)
+    window.document.getElementById(resultadoCalculo.resultado).classList.add(resultadoCalculo.cor)
 
-    resultado.innerHTML = `Olá ${nome}, o seu IMC é: ${calculoImc.toFixed(2)}<br />`
-    if (calculoImc < 18.50) {
-        resultadoAbaixoPeso.classList.add('blue')
-        resultadoPeso.classList.remove('blue')
-        resultadoSobrePeso.classList.remove('blue')
-        resultadoObesidadeUm.classList.remove('orange')
-        resultadoObesidadeDois.classList.remove('orange')
-        resultadoObesidadeTres.classList.remove('red')
-        limparCampo()
-    } else if (calculoImc >= 18.50 && calculoImc <= 24.9) {
-        resultadoPeso.classList.add('blue')
-        resultadoAbaixoPeso.classList.remove('blue')
-        resultadoSobrePeso.classList.remove('blue')
-        resultadoObesidadeUm.classList.remove('orange')
-        resultadoObesidadeDois.classList.remove('orange')
-        resultadoObesidadeTres.classList.remove('red')
-        limparCampo()
-    } else if (calculoImc >= 25 && calculoImc <= 29.9) {
-        resultadoSobrePeso.classList.add('blue')
-        resultadoAbaixoPeso.classList.remove('blue')
-        resultadoPeso.classList.remove('blue')
-        resultadoObesidadeUm.classList.remove('orange')
-        resultadoObesidadeDois.classList.remove('orange')
-        resultadoObesidadeTres.classList.remove('red')
-        limparCampo()
-    } else if (calculoImc >= 30 && calculoImc <= 34.9) {
-        resultadoObesidadeUm.classList.add('orange')
-        resultadoAbaixoPeso.classList.remove('blue')
-        resultadoPeso.classList.remove('blue')
-        resultadoSobrePeso.classList.remove('blue')
-        resultadoObesidadeDois.classList.remove('orange')
-        resultadoObesidadeTres.classList.remove('red')
-        limparCampo()
-    } else if (calculoImc >= 35 && calculoImc <= 39.9) {
-        resultadoObesidadeDois.classList.add('orange')
-        resultadoAbaixoPeso.classList.remove('blue')
-        resultadoPeso.classList.remove('blue')
-        resultadoSobrePeso.classList.remove('blue')
-        resultadoObesidadeUm.classList.remove('orange')
-        resultadoObesidadeTres.classList.remove('red')
-        limparCampo()
-    } else if (calculoImc >= 40) {
-        resultadoObesidadeTres.classList.add('red')
-        resultadoAbaixoPeso.classList.remove('blue')
-        resultadoPeso.classList.remove('blue')
-        resultadoSobrePeso.classList.remove('blue')
-        resultadoObesidadeUm.classList.remove('orange')
-        resultadoObesidadeDois.classList.remove('orange')
-        limparCampo()
+    document.getElementById('calculo')
+
+    limparCampo()
+}
+
+function removeHighlight() {
+    var lines = document.getElementsByTagName('tr')
+    for(var i = 0;i < lines.length;i++) {
+        lines[i].classList.remove('red', 'blue', 'orange')
     }
 }
 
@@ -74,4 +30,42 @@ function limparCampo() {
     nome.value = ''
     altura.value = ''
     peso.value = ''
+}
+
+function calculoImc(peso, altura) {
+    var calculo = (peso / (altura * altura)).toFixed(2)
+    var resultado = ''
+    var cor = ''
+    var blue = 'blue'
+    var orange = 'orange'
+    var red = 'red'
+    var abaixoPeso = calculo < 18.50
+    var pesoNormal = calculo >= 18.50 && calculo <= 24.9
+    var sobrepeso = calculo >= 25 && calculo <= 29.9
+    var obesidadeI = calculo >= 30 && calculo <= 34.9
+    var obesidadeII = calculo >= 35 && calculo <= 39.9
+    var obesidadeIII = calculo >= 40
+
+    if (abaixoPeso) {
+        resultado = 'resultado-abaixo-peso'
+        cor = blue
+    } else if (pesoNormal) {
+        resultado = 'resultado-peso'
+        cor = blue
+    } else if (sobrepeso) {
+        resultado = 'resultado-sobrepeso'
+        cor = blue
+    } else if (obesidadeI) {
+        resultado = 'resultado-obesidade-um'
+        cor = orange
+    } else if (obesidadeII) {
+        resultado = 'resultado-obesidade-dois'
+        cor = orange
+    } else if (obesidadeIII) {
+        resultado = 'resultado-obesidade-tres'
+        cor = red
+    } 
+
+    return{calculo, resultado, cor}
+
 }
