@@ -5,18 +5,22 @@ function calcular() {
     var altura = window.document.getElementById('altura').value
     var peso = window.document.getElementById('peso').value
 
+    if(nome == "" || altura == "" || peso == "") {
+        alert("Por favor, preencha todos os dados do formulário.")
+    } else {
+        
+        var resultado = window.document.getElementById('resultado')
+        var resultadoCalculo = calculoImc(peso, altura)
+
+        resultado.innerHTML = `Olá ${nome}, o seu IMC é: ${resultadoCalculo.calculo}<br />`
+
+        window.document.getElementById(resultadoCalculo.resultado).classList.add(resultadoCalculo.cor)
+
+        document.getElementById('calculo')
+
+        limparCampo()
+    }
     //altura.replace(',', '.')
-
-    var resultado = window.document.getElementById('resultado')
-    var resultadoCalculo = calculoImc(peso, altura)
-
-    resultado.innerHTML = `Olá ${nome}, o seu IMC é: ${resultadoCalculo.calculo}<br />`
-
-    window.document.getElementById(resultadoCalculo.resultado).classList.add(resultadoCalculo.cor)
-
-    document.getElementById('calculo')
-
-    limparCampo()
 }
 
 function removeHighlight() {
@@ -67,5 +71,4 @@ function calculoImc(peso, altura) {
     } 
 
     return{calculo, resultado, cor}
-
 }
