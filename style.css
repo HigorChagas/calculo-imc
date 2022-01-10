@@ -34,7 +34,6 @@
 }
 
 .classificacao {
-    width: 35%;
     height: 35%; 
 }
 
@@ -105,7 +104,6 @@
 }
 
 .calculadora-wrapper {
-    height: 80%;
     width: 50rem;
     display: flex;
     justify-content: center;
@@ -113,7 +111,7 @@
 
 .calculadora {
     background-color: #dee2ff;
-    height: 75%;
+    height: 65%;
     width: 40rem;
     border-radius: 25px;
     opacity: 0.9;
@@ -130,6 +128,9 @@
 
 .campo {
     margin: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .campo-input {
@@ -138,13 +139,15 @@
     font-size: 2rem;
     border-radius: 5px;
     box-shadow: 0 0 .2em #000;
+
 }
 
 .campo-label{
     font-family: 'Times New Roman', Times, serif;
     text-transform: uppercase;
     font-size: 1.2rem;
-    font-weight: bolder;
+    font-weight: lighter;
+    padding-bottom: 5px;
     
 }
 
