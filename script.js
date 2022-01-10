@@ -1,71 +1,77 @@
+function Pessoa(nome, altura, peso) {
+    this.nome = nome
+    this.altura = altura,
+    this.peso = peso
+}
 function calcular() {
-    removeHighlight()
+    removeHighlight();
     
-    var nome = window.document.getElementById('nome').value
-    var altura = window.document.getElementById('altura').value
-    var peso = window.document.getElementById('peso').value
+    const pessoa = new Pessoa(
+        document.querySelector('#nome').value,
+        document.querySelector('#altura').value,
+        document.querySelector('#peso').value
+    );
 
-    //altura.replace(',', '.')
+    const resultado = window.document.getElementById('resultado');
 
-    var resultado = window.document.getElementById('resultado')
-    var resultadoCalculo = calculoImc(peso, altura)
+    if(!nome.value || !altura.value || !peso.value) {
+        alert("Por favor, preencha todos os dados do formulário.");
+        resultado.innerHTML = "Por favor, preencha todos os campos acima";
+        return;
+    } else {
+        const resultadoCalculo = calculoImc(pessoa.peso, pessoa.altura);
 
-    resultado.innerHTML = `Olá ${nome}, o seu IMC é: ${resultadoCalculo.calculo}<br />`
-
-    window.document.getElementById(resultadoCalculo.resultado).classList.add(resultadoCalculo.cor)
-
-    document.getElementById('calculo')
-
-    limparCampo()
+        resultado.innerHTML = `Olá ${pessoa.nome}, o seu IMC é: ${resultadoCalculo.calculo}<br />`;
+        document.getElementById(resultadoCalculo.resultado).classList.add(resultadoCalculo.cor);
+    };
 }
 
 function removeHighlight() {
-    var lines = document.getElementsByTagName('tr')
-    for(var i = 0;i < lines.length;i++) {
-        lines[i].classList.remove('red', 'blue', 'orange')
+    const lines = document.getElementsByTagName('tr');
+
+    for(let chaves of lines) {
+        chaves.classList.remove('red', 'blue', 'orange');
+        console.log(chaves);
     }
 }
 
-function limparCampo() {
-    nome.value = ''
-    altura.value = ''
-    peso.value = ''
-}
-
 function calculoImc(peso, altura) {
-    var calculo = (peso / (altura * altura)).toFixed(2)
-    var resultado = ''
-    var cor = ''
-    var blue = 'blue'
-    var orange = 'orange'
-    var red = 'red'
-    var abaixoPeso = calculo < 18.50
-    var pesoNormal = calculo >= 18.50 && calculo <= 24.9
-    var sobrepeso = calculo >= 25 && calculo <= 29.9
-    var obesidadeI = calculo >= 30 && calculo <= 34.9
-    var obesidadeII = calculo >= 35 && calculo <= 39.9
-    var obesidadeIII = calculo >= 40
+    const calculo = (peso / (altura * altura)).toFixed(2);
+    let resultado = '';
+    let cor = '';
+    const cores = [
+        'blue',
+        'orange',
+        'red'
+    ];
+
+    const abaixoPeso = calculo < 18.50;
+    const pesoNormal = calculo >= 18.50 && calculo <= 24.9;
+    const sobrepeso = calculo >= 25 && calculo <= 29.9;
+    const obesidadeI = calculo >= 30 && calculo <= 34.9;
+    const obesidadeII = calculo >= 35 && calculo <= 39.9;
+    const obesidadeIII = calculo >= 40;
 
     if (abaixoPeso) {
-        resultado = 'resultado-abaixo-peso'
-        cor = blue
+        resultado = 'resultado-abaixo-peso';
+        cor = cores[0];
     } else if (pesoNormal) {
-        resultado = 'resultado-peso'
-        cor = blue
+        resultado = 'resultado-peso';
+        cor = cores[0];
     } else if (sobrepeso) {
-        resultado = 'resultado-sobrepeso'
-        cor = blue
+        resultado = 'resultado-sobrepeso';
+        cor = cores[0];
     } else if (obesidadeI) {
-        resultado = 'resultado-obesidade-um'
-        cor = orange
+        resultado = 'resultado-obesidade-um';
+        cor = cores[1];
     } else if (obesidadeII) {
-        resultado = 'resultado-obesidade-dois'
-        cor = orange
+        resultado = 'resultado-obesidade-dois';
+        cor = cores[1];
     } else if (obesidadeIII) {
-        resultado = 'resultado-obesidade-tres'
-        cor = red
+        resultado = 'resultado-obesidade-tres';
+        alert("RISCO DE VIDA! Procure um médico");
+        cor = cores[2];
     } 
 
     return{calculo, resultado, cor}
-
 }
