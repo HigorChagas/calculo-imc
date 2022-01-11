@@ -3,15 +3,7 @@ function Pessoa(nome, altura, peso) {
     this.altura = altura,
     this.peso = peso
 }
-
-function validateForm() {
-    if(!nome.value || !altura.value || peso.value) {
-        alert('Por favor, preencha todos os dados do formulário.');
-        resultado.innerHTML = 'Por favor, preencha todos os campos acima';
-        return;
-    }
-}
-function calculate() {
+function calcular() {
     removeHighlight();
     
     const pessoa = new Pessoa(
@@ -37,8 +29,8 @@ function calculate() {
 function removeHighlight() {
     const lines = document.getElementsByTagName('tr');
 
-    for(let chaves of lines) {
-        chaves.classList.remove('red', 'blue', 'orange');
+    for(let chave of lines) {
+        chave.classList.remove('red', 'blue', 'orange');
     }
 }
 
