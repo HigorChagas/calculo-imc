@@ -3,34 +3,37 @@ function Pessoa(nome, altura, peso) {
     this.altura = altura,
     this.peso = peso
 }
+
+const pessoa = new Pessoa(
+    document.querySelector('#nome').value,
+    document.querySelector('#altura').value,
+    document.querySelector('#peso').value
+);
+
+const resultado = window.document.getElementById('resultado');
+
+function validaForm() {
+    if(!nome.value || !altura.value || !peso.value) {
+        alert('Por favor, preencha todos os dados do formulário');
+        resultado.innerTML = 'Por favor, preencha todos os campos acima';
+        return;
+    }
+}
 function calcular() {
     removeHighlight();
+    validaForm();
     
-    const pessoa = new Pessoa(
-        document.querySelector('#nome').value,
-        document.querySelector('#altura').value,
-        document.querySelector('#peso').value
-    );
-
-    const resultado = window.document.getElementById('resultado');
-
-    if(!nome.value || !altura.value || !peso.value) {
-        alert("Por favor, preencha todos os dados do formulário.");
-        resultado.innerHTML = "Por favor, preencha todos os campos acima";
-        return;
-    } else {
         const resultadoCalculo = calculoImc(pessoa.peso, pessoa.altura);
 
         resultado.innerHTML = `Olá ${pessoa.nome}, o seu IMC é: ${resultadoCalculo.calculo}<br />`;
         document.getElementById(resultadoCalculo.resultado).classList.add(resultadoCalculo.cor);
-    };
 }
 
 function removeHighlight() {
     const lines = document.getElementsByTagName('tr');
 
-    for(let chave of lines) {
-        chave.classList.remove('red', 'blue', 'orange');
+    for(let chaves of lines) {
+        chaves.classList.remove('red', 'blue', 'orange');
     }
 }
 
