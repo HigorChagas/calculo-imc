@@ -12,21 +12,18 @@ const pessoa = new Pessoa(
 
 const resultado = window.document.getElementById('resultado');
 
-function validaForm() {
-    if(!nome.value || !altura.value || !peso.value) {
-        alert('Por favor, preencha todos os dados do formulário');
-        resultado.innerTML = 'Por favor, preencha todos os campos acima';
-        return;
-    }
-}
 function calcular() {
     removeHighlight();
-    validaForm();
+    if(!nome.value || !altura.value || !peso.value) {
+        alert('Por favor, preencha todos os dados do formulário');
+        resultado.innerHTML = 'Por favor, preencha todos os campos acima';
+        return;
+    }
     
-        const resultadoCalculo = calculoImc(pessoa.peso, pessoa.altura);
+    const resultadoCalculo = calculoImc(pessoa.peso, pessoa.altura);
 
-        resultado.innerHTML = `Olá ${pessoa.nome}, o seu IMC é: ${resultadoCalculo.calculo}<br />`;
-        document.getElementById(resultadoCalculo.resultado).classList.add(resultadoCalculo.cor);
+    resultado.innerHTML = `Olá ${pessoa.nome}, o seu IMC é: ${resultadoCalculo.calculo}<br />`;
+    document.getElementById(resultadoCalculo.resultado).classList.add(resultadoCalculo.cor);
 }
 
 function removeHighlight() {
@@ -42,9 +39,9 @@ function calculoImc(peso, altura) {
     let resultado = '';
     let cor = '';
     const cores = [
-        'blue',
-        'orange',
-        'red'
+        'azul',
+        'laranja',
+        'vermelho'
     ];
 
     const abaixoPeso = calculo < 18.50;
